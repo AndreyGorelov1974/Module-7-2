@@ -37,16 +37,68 @@
 
 int main()
 {
-    SetConsoleCP(1251);
-    SetConsoleOutputCP(1251);
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
 
-    int buckwheatStock = 100;
-    std::cout << "Всего гречки было на начало подсчёта: " << buckwheatStock << std::endl;
-    int beenMonth = 1;
+	std::cout << "Введите количество воды в мл: ";
+	int volumeWater;
+	std::cin >> volumeWater;
 
-    for (buckwheatStock = 96; buckwheatStock > 0; buckwheatStock -= 4) {
-        std::cout << "После " << beenMonth << " месяца у вас в запасе останется " << buckwheatStock << " кг гречки" << std::endl;
-        beenMonth++;
-    }
-    std::cout << "После " << beenMonth << " месяца гречка закончится." << std::endl;
+	while (volumeWater < 0) {
+		std::cout << std::endl << "Количество воды должно быть больше 0. Введите снова: ";
+		std::cin >> volumeWater;
+	}
+
+	std::cout << "Введите количество молока в мл: ";
+	int volumeMilk;
+	std::cin >> volumeMilk;
+
+	while (volumeMilk < 0) {
+		std::cout << std::endl << "Количество молока должно быть больше 0. Введите снова: ";
+		std::cin >> volumeMilk;
+	}
+
+	int americanoCup = 0;
+	int latteCup = 0;
+
+	while (volumeWater < 300 && volumeMilk < 270) {
+
+		std::cout << "Выберите напиток(1 — американо, 2 — латте): ";
+		int userChoice;
+		std::cin >> userChoice;
+
+		if (userChoice == 1) {
+			if (volumeWater < 300) {
+				std::cout << "Не хватает воды";
+			}
+			else {
+				volumeWater -= 300;
+				americanoCup++;
+				std::cout << "Ваш напиток готов";
+			}
+		}
+
+		if (userChoice == 2) {
+			if (volumeWater < 30) {
+				std::cout << "Не хватает воды";
+			}
+			else if (volumeMilk < 270) {
+				std::cout << "Не хватает молока";
+			}
+			else {
+				volumeWater -= 30;
+				volumeMilk -= 270;
+				latteCup++;
+				std::cout << "Ваш напиток готов";
+			}
+		}
+
+	}
+
+	std::cout << "*** Отчёт ***" << std::endl << "Ингредиентов осталось:" << std::endl;
+	std::cout << "Вода: " << volumeWater << " мл" << std::endl;
+	std::cout << "Молоко: " << volumeMilk << " мл" << std::endl;
+	std::cout << "Кружек американо приготовлено: " << americanoCup << std::endl;
+	std::cout << "Кружек латте приготовлено: " << latteCup << std::endl;
+
 }
