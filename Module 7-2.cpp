@@ -61,7 +61,7 @@ int main()
 	int americanoCup = 0;
 	int latteCup = 0;
 
-	while (volumeWater < 300 && volumeMilk < 270) {
+	while (volumeWater < 300 || volumeMilk < 270) {
 
 		std::cout << "Выберите напиток(1 — американо, 2 — латте): ";
 		int userChoice;
