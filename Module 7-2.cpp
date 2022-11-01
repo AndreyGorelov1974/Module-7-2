@@ -61,7 +61,7 @@ int main()
 	int americanoCup = 0;
 	int latteCup = 0;
 
-	while (volumeWater < 300 || volumeMilk < 270) {
+	while (volumeWater >= 300 || volumeMilk >= 270) {
 
 		std::cout << "Выберите напиток(1 — американо, 2 — латте): ";
 		int userChoice;
@@ -69,27 +69,27 @@ int main()
 
 		if (userChoice == 1) {
 			if (volumeWater < 300) {
-				std::cout << "Не хватает воды";
+				std::cout << "Не хватает воды" << std::endl;
 			}
 			else {
 				volumeWater -= 300;
 				americanoCup++;
-				std::cout << "Ваш напиток готов";
+				std::cout << "Ваш напиток готов" << std::endl;
 			}
 		}
 
 		if (userChoice == 2) {
 			if (volumeWater < 30) {
-				std::cout << "Не хватает воды";
+				std::cout << "Не хватает воды" << std::endl;
 			}
 			else if (volumeMilk < 270) {
-				std::cout << "Не хватает молока";
+				std::cout << "Не хватает молока" << std::endl;
 			}
 			else {
 				volumeWater -= 30;
 				volumeMilk -= 270;
 				latteCup++;
-				std::cout << "Ваш напиток готов";
+				std::cout << "Ваш напиток готов" << std::endl;
 			}
 		}
 
